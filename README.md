@@ -25,7 +25,7 @@ styles.css: Estilos gerais.
 
 script.js: Lógica de interatividade (menu, FAQ, etc.).
 
-🛠️ Padrões e Tecnologias
+🛠️ Padrões e Tecnologias:
 HTML
 CSS
 JavaScript
