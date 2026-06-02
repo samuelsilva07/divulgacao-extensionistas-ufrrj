@@ -14,7 +14,8 @@ python3 -m http.server 8080
 📂 Estrutura do Projeto
 index.html: Página inicial.
 
-sobre.html: Informações sobre a atividade.
+sobre.
+html: Informações sobre a atividade.
 
 atividades.html: Equipe e liderança.
 
