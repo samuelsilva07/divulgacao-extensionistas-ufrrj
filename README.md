@@ -10,8 +10,7 @@ Bash
 # Usando Python
 python3 -m http.server 8080
 
-# Usando Node.js
-npx serve .
+
 📂 Estrutura do Projeto
 index.html: Página inicial.
 
