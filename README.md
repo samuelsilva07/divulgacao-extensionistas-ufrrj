@@ -26,8 +26,6 @@ styles.css: Estilos gerais.
 script.js: Lógica de interatividade (menu, FAQ, etc.).
 
 🛠️ Padrões e Tecnologias
-HTML: Uso de tags semânticas do HTML5 e práticas de acessibilidade (atributos aria-*).
-
-CSS: Padrão BEM (Block Element Modifier), design mobile-first e variáveis de ambiente no :root.
-
-JavaScript: Vanilla moderno (ES6+), sem bibliotecas, responsável pela interatividade do menu mobile e accordion do FAQ.
+HTML
+CSS
+JavaScript
