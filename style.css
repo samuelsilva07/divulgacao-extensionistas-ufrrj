@@ -9,6 +9,12 @@
     --footer-bg: #002244; /* Um azul um pouco mais escuro para o rodapé */
 }
 
+img{
+    max-width: 70px;
+    height: auto;
+}
+
+
 * {
     margin: 0;
     padding: 0;
