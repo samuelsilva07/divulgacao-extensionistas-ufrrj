@@ -1,120 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sobre — UFRRJ Extensão</title>
-    <meta name="description" content="Dados e descrição da atividade extensionista: coordenador, carga horária e detalhes." />
-    <link rel="canonical" href="/sobre" />
-    <meta property="og:title" content="Sobre — UFRRJ Extensão" />
-    <meta property="og:description" content="Dados e descrição da atividade extensionista." />
-    <meta property="og:url" content="/sobre" />
-    <link rel="stylesheet" href="atividade.css" />
-  </head>
-  <body>
-    <a class="visually-hidden" href="#conteudo">Pular para o conteúdo</a>
-
-    <header class="site-header">
-      <div class="container site-header__inner">
-        <a class="site-header__brand" href="index.html">
-          <span class="site-header__logo" aria-hidden="true">U</span>
-          <span class="site-header__brand-name">UFRRJ</span>
-        </a>
-        <nav class="site-nav site-nav--desktop" aria-label="Principal">
-          <ul class="site-nav__list">
-            <li><a class="site-nav__link" href="index.html">Página inicial</a></li>
-            <li><a class="site-nav__link" href="sobre.html">Sobre</a></li>
-            <li><a class="site-nav__link" href="atividades.html">Atividades</a></li>
-            <li><a class="site-nav__link" href="contato.html">Contato</a></li>
-          </ul>
-        </nav>
-        <button class="site-header__toggle" type="button"
-                aria-label="Abrir menu" aria-expanded="false"
-                aria-controls="menu-mobile" data-menu-toggle>
-          <svg class="site-header__toggle-icon" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      <nav class="site-nav site-nav--mobile" id="menu-mobile" aria-label="Principal — móvel" data-menu>
-        <div class="container">
-          <ul class="site-nav__list">
-            <li><a class="site-nav__link" href="index.html">Página inicial</a></li>
-            <li><a class="site-nav__link" href="sobre.html">Sobre</a></li>
-            <li><a class="site-nav__link" href="atividades.html">Atividades</a></li>
-            <li><a class="site-nav__link" href="contato.html">Contato</a></li>
-          </ul>
-        </div>
+    <link rel="stylesheet" href="atividade.css"/>
+</head>
+<body>    
+  <header>
+    <div class="header__logo">
+      <a class="header__logo--link" href="index.html">
+        <img src="rural_logo02.png" alt="logo-ufrrj" class="header__logo--imagem">
+      </a>
+        <h2 class="header__logo--texto">UFRRJ<br>Instituto Multidisciplinar</h2>
+    </div>
+      <nav>
+        <a class="link nav__link" href="#info">Info</a>
+        <a class="link nav__link" href="#dados">Dados</a>
+        <a class="link nav__link" href="#contato">Contato</a>
       </nav>
-    </header>
+  </header>
 
-    <main id="conteudo">
-      <section class="hero" aria-labelledby="sobre-title">
-        <div class="container">
-          <div style="padding-block: 4rem;">
-            <p class="hero__eyebrow">Sobre</p>
-            <h1 class="page-title" id="sobre-title">Nome da atividade</h1>
-            <p class="page-subtitle">Coordenador:</p>
-          </div>
-        </div>
-      </section>
+  <main>
+    <section class="hero">
+      <h1 class="titulo">Nome da atividade</h1>
+      <p class="subtitulo">Coordenador:</p>
+    </section>
 
-      <section class="section" aria-labelledby="carga-title">
-        <div class="container container--narrow">
-          <h2 class="section__title" id="carga-title" style="text-transform:none; letter-spacing:0;">
-            Carga horária da atividade: <span class="page-heading-mark">90h</span>
-          </h2>
-          <p class="section__text" style="margin-top: var(--space-6);">
-            Nesta atividade, os alunos desenvolveram...
-          </p>
-        </div>
-      </section>
-
-      <section class="section section--surface" aria-labelledby="dados-title">
-        <div class="container">
-          <h2 class="section__title" id="dados-title">Dados da atividade</h2>
-          <div class="section__rule" aria-hidden="true"></div>
-
-          <div class="media-grid media-grid--cols-2">
-            <figure class="media-card">
-              <div class="media-card__visual" aria-hidden="true"></div>
-              <figcaption class="media-card__caption">Legenda de uma conquista recente</figcaption>
-            </figure>
-            <figure class="media-card">
-              <div class="media-card__visual" aria-hidden="true"></div>
-              <figcaption class="media-card__caption">Legenda de uma conquista recente</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container site-footer__inner">
-        <div class="site-footer__grid">
-          <div class="site-footer__col">
-            <p class="site-footer__heading">UFRRJ</p>
-            <p>Impacto das Atividades Extensionistas na comunidade.</p>
-          </div>
-          <div class="site-footer__col">
-            <p class="site-footer__heading">Contato</p>
-            <p>[E-mail]</p>
-            <p>[Endereço]</p>
-            <p>[Número de telefone]</p>
-          </div>
-          <div class="site-footer__col">
-            <p class="site-footer__heading">Sugestões</p>
-            <p><a href="mailto:dididi@gmail.com">dididi@gmail.com</a></p>
-          </div>
-        </div>
-        <p class="site-footer__legal">© <span data-year>2026</span> UFRRJ — Projeto de Extensão.</p>
+    <section class="info" id="info">
+        <h2 class="titulo info__titulo">
+          Carga horária da atividade: 90h
+        </h2>
+        <p class="info__descricao">
+          Nesta atividade, os alunos desenvolveram...
+        </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita cupiditate officiis sequi quibusdam. Nostrum fuga aspernatur doloribus modi. At cumque voluptatibus officia velit modi quam esse necessitatibus enim deleniti corporis.</p>
+        <p>Dolore, quidem excepturi. Optio totam dolor libero veritatis facilis, eos reprehenderit autem recusandae obcaecati est non odio? Quos ad quo molestias aut qui ipsam reiciendis harum? Ab fugiat culpa quibusdam.</p>
+        <p>Ipsum ducimus fugiat atque animi iusto quis a provident eveniet veniam vel et sequi mollitia in facilis soluta exercitationem minima quam itaque, eligendi ratione facere quisquam commodi veritatis! Perferendis, dicta.</p>
       </div>
-    </footer>
+    </section>
 
-    <script src="atividade.js" defer></script>
-  </body>
+    <section class="dados" id="dados">
+        <h2 class="titulo" id="dados-title">Dados da atividade</h2>
+
+        <div class="dados__container">
+          <div class="dados__dashboard">
+            <!-- dashboard aqui -->
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <footer id="contato">
+    <div class="container">
+      <div class="footer__item">
+        <p class="footer__subtitulo">UFRRJ</p>
+        <p>Universidade Federal Rural do Rio de Janeiro — Instituto Multidisciplinar.</p>
+      </div>
+      <div class="footer__item">
+        <p class="footer__subtitulo">Contato</p>
+        <p>[E-mail]</p>
+        <p>[Endereço]</p>
+        <p>[Número de telefone]</p>
+      </div>
+      <div class="footer__item">
+        <p class="footer__subtitulo">Sugestão de melhora?</p>
+        <p>Entre em contato pelo e-mail <a href="mailto:suporte@gmail.com" class="link footer__link">suporte@gmail.com</a></p>
+      </div>
+    </div>
+      <p class="footer__copyright">© <span data-year>2026</span> UFRRJ. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="atividade.js" defer></script>
+</body>
 </html>
