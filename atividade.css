@@ -27,9 +27,11 @@ body {
     color: var(--text-color);
 
     font-family: var(--main-font);
+    line-height: 1.6;
 }
 
 .titulo {
+    color: var(--heading-color);
     padding-bottom: 0.5em;
 }
 
@@ -42,19 +44,28 @@ a:hover {
     text-decoration: underline;
 }
 
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
 
 /* HEADER */
 
 header {
-    padding: 0.5em 2em;
+    padding: 10px 2em;
     /* border-bottom: 0.5px solid var(--text-color); */
-    
+}
+
+.header__container {
+    max-width: 1400px;
+    margin: auto;
 
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1em 2em;
+    /* gap: 1em 5em; */
 }
 
 .header__logo {
@@ -62,7 +73,7 @@ header {
 
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: 0.25em;
     align-items: center;
     justify-content: center;
 }
@@ -72,7 +83,7 @@ header {
 }
 
 .header__logo--texto {
-    font-size: 20px;
+    font-size: 1em;
     font-weight: 500;
 }
 
@@ -91,45 +102,68 @@ nav {
 
 /* MAIN */
 
-section {
-    padding: 2em 1em;
-}
-
 
 /* HERO */
 
 .hero {
+    padding: 2em 1em;
     color: white;
     background-color: var(--heading-color);
 }
 
+.hero__titulo {
+    padding-bottom: 0.5em;
+}
+
+/* INFO */
+ 
+.info {
+    padding: 2em 1em;
+ }
+
+.info__descricao p {
+    padding-bottom: 20px;
+}
 
 /* DADOS */
 
 .dados {
+    padding: 2em 1em;
     background-color: var(--light-creme);
+}
+
+.dados__analises {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2em 4em;
+    margin: 2em auto;
+}
+.dados__dashboard .card {
+    /* background-color: var(--bg-color); */
+    border: 1px solid black;
+    width: 400px;
+    height: 200px;
 }
 
 
 /* FOOTER */
 
 footer {
+    padding: 3em 1em;
     color: white;
     background-color: var(--footer-bg);
     
-    padding: 1em;
     font-size: 14px;
 }
 
-.container {
-    padding: 2em 0;
-
+footer.container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 2em;
-
 }
 
 .footer__subtitulo {

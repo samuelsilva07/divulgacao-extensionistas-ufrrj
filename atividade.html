@@ -8,44 +8,61 @@
 </head>
 <body>    
   <header>
-    <div class="header__logo">
-      <a class="header__logo--link" href="index.html">
-        <img src="rural_logo02.png" alt="logo-ufrrj" class="header__logo--imagem">
-      </a>
+    <div class="header__container">
+      <div class="header__logo">
+        <a class="header__logo--link" href="index.html">
+          <img src="rural_logo02.png" alt="logo-ufrrj" class="header__logo--imagem">
+        </a>
         <h2 class="header__logo--texto">UFRRJ<br>Instituto Multidisciplinar</h2>
-    </div>
+      </div>
       <nav>
         <a class="link nav__link" href="#info">Info</a>
         <a class="link nav__link" href="#dados">Dados</a>
         <a class="link nav__link" href="#contato">Contato</a>
       </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <h1 class="titulo">Nome da atividade</h1>
-      <p class="subtitulo">Coordenador:</p>
-    </section>
-
-    <section class="info" id="info">
-        <h2 class="titulo info__titulo">
-          Carga horária da atividade: 90h
-        </h2>
-        <p class="info__descricao">
-          Nesta atividade, os alunos desenvolveram...
-        </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita cupiditate officiis sequi quibusdam. Nostrum fuga aspernatur doloribus modi. At cumque voluptatibus officia velit modi quam esse necessitatibus enim deleniti corporis.</p>
-        <p>Dolore, quidem excepturi. Optio totam dolor libero veritatis facilis, eos reprehenderit autem recusandae obcaecati est non odio? Quos ad quo molestias aut qui ipsam reiciendis harum? Ab fugiat culpa quibusdam.</p>
-        <p>Ipsum ducimus fugiat atque animi iusto quis a provident eveniet veniam vel et sequi mollitia in facilis soluta exercitationem minima quam itaque, eligendi ratione facere quisquam commodi veritatis! Perferendis, dicta.</p>
+      <div class="container">
+        <h1 class="hero-titulo">Nome da atividade</h1>
+        <p class="subtitulo">Coordenador:</p>
       </div>
     </section>
 
-    <section class="dados" id="dados">
-        <h2 class="titulo" id="dados-title">Dados da atividade</h2>
+    <section class="info" id="info">
+        <div class="container">
+          <h2 class="titulo info__titulo">
+            Carga horária da atividade: 90h
+          </h2>
+          <div class="info__descricao">
+            <p>
+              Nesta atividade, os alunos desenvolveram...
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita cupiditate officiis sequi quibusdam. Nostrum fuga aspernatur doloribus modi. At cumque voluptatibus officia velit modi quam esse necessitatibus enim deleniti corporis.</p>
+            <p>Dolore, quidem excepturi. Optio totam dolor libero veritatis facilis, eos reprehenderit autem recusandae obcaecati est non odio? Quos ad quo molestias aut qui ipsam reiciendis harum? Ab fugiat culpa quibusdam.</p>
+            <p>Ipsum ducimus fugiat atque animi iusto quis a provident eveniet veniam vel et sequi mollitia in facilis soluta exercitationem minima quam itaque, eligendi ratione facere quisquam commodi veritatis! Perferendis, dicta.</p>
+          </div>
+        </div>
+    </section>
 
-        <div class="dados__container">
-          <div class="dados__dashboard">
-            <!-- dashboard aqui -->
+    <section class="dados" id="dados">
+        <div class="container">
+          <h2 class="titulo">Dados da atividade</h2>
+          <div class="dados__analises">
+            <div class="dados__dashboard">
+              <div class="card">Dashboard aqui</div>
+            </div>
+            <div class="dados__dashboard">
+              <div class="card">Dashboard aqui</div>
+            </div>
+            <div class="dados__dashboard">
+              <div class="card">Dashboard aqui</div>
+            </div>
+            <div class="dados__dashboard">
+              <div class="card">Dashboard aqui</div>
+            </div>
           </div>
         </div>
     </section>
@@ -71,6 +88,6 @@
       <p class="footer__copyright">© <span data-year>2026</span> UFRRJ. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="atividade.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
