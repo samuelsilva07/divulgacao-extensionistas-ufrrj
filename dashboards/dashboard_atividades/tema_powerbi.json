@@ -1,0 +1,13 @@
+{
+  "name": "Pesquisa Universidade",
+  "dataColors": [
+    "#0F3B8C",
+    "#00A1FF",
+    "#008F4F",
+    "#FFCC29",
+    "#444F6C"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#444F6C",
+  "tableAccent": "#0F3B8C"
+}

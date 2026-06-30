@@ -1,0 +1,38 @@
+{
+  "name": "Pesquisa com escolas - compacto web",
+  "dataColors": [
+    "#444F6C",
+    "#0F3B8C",
+    "#00A1FF",
+    "#FFCC29",
+    "#008F4F"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#444F6C",
+  "tableAccent": "#00A1FF",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#0F3B8C"
+              }
+            },
+            "fontSize": 11
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#444F6C"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
