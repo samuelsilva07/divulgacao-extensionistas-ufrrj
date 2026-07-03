@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividades realizadas na universidade</title>
+<style>
+:root {
+  --azul-cinza:#444F6C; --azul-escuro:#0F3B8C; --azul-claro:#00A1FF; --amarelo:#FFCC29; --verde:#008F4F;
+  --borda:#E6EAF1; --texto:#223; --fundo:#FFFFFF;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:#f7f9fc; font-family:Inter, Segoe UI, Arial, sans-serif; color:var(--texto); }
+.dashboard { max-width:1180px; margin:20px auto; background:white; padding:22px; border-radius:22px; box-shadow:0 8px 30px rgba(15,59,140,.08); }
+.header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:18px; }
+h1 { margin:0; color:var(--azul-escuro); font-size:28px; letter-spacing:-.03em; }
+.subtitle { margin:6px 0 0; color:var(--azul-cinza); font-size:14px; }
+.filters { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+.filter { display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--azul-cinza); font-weight:700; }
+select { min-width:170px; padding:10px 12px; border:1px solid var(--borda); border-radius:12px; background:#fff; color:var(--azul-cinza); }
+.kpis { display:grid; grid-template-columns: repeat(2, minmax(180px, 1fr)); gap:14px; margin-bottom:16px; }
+.card { border:1px solid var(--borda); border-radius:18px; padding:16px; background:#fff; }
+.kpi-label { color:var(--azul-cinza); font-weight:700; font-size:13px; }
+.kpi-value { color:var(--azul-escuro); font-size:34px; font-weight:800; margin-top:8px; }
+.grid { display:grid; grid-template-columns: 1.4fr .9fr; gap:16px; }
+h2 { margin:0 0 14px; font-size:17px; color:var(--azul-escuro); }
+.chart-list { display:flex; flex-direction:column; gap:10px; }
+.bar-row { display:grid; grid-template-columns:minmax(180px,1fr) 80px; gap:12px; align-items:center; }
+.bar-label { font-size:12.5px; color:var(--azul-cinza); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bar-wrap { height:12px; background:#EEF3FA; border-radius:999px; overflow:hidden; margin-top:5px; }
+.bar { height:100%; background:linear-gradient(90deg, var(--azul-escuro), var(--azul-claro)); border-radius:999px; }
+.value { text-align:right; color:var(--azul-escuro); font-weight:800; font-size:13px; }
+.rank-item { border-bottom:1px solid var(--borda); padding:10px 0; }
+.rank-item:last-child { border-bottom:0; }
+.rank-title { font-size:13px; color:var(--azul-cinza); font-weight:700; }
+.rank-value { color:var(--verde); font-size:20px; font-weight:800; margin-top:4px; }
+.insights { margin-top:16px; border-left:5px solid var(--amarelo); }
+.insights ul { margin:0; padding-left:20px; color:var(--azul-cinza); }
+.insights li { margin:8px 0; line-height:1.4; }
+.impactos { margin-top:16px; }
+.impact-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+.impact-card { border:1px solid var(--borda); border-radius:16px; padding:14px; background:#fff; }
+.impact-title { font-size:13px; font-weight:800; color:var(--azul-escuro); margin-bottom:7px; }
+.impact-meta { color:var(--azul-cinza); font-size:12px; margin-bottom:8px; }
+.impact-text { color:#334; font-size:13.5px; line-height:1.55; white-space:normal; overflow:visible; }
+@media(max-width:850px) {
+  .header,.filters { flex-direction:column; align-items:stretch; }
+  .grid,.kpis { grid-template-columns:1fr; }
+  select { width:100%; }
+}
+</style>
+</head>
+<body>
+<div class="dashboard">
+  <div class="header">
+    <div>
+      <h1>Atividades realizadas na universidade</h1>
+      <p class="subtitle">Painel de acompanhamento dos participantes, públicos-alvo e impactos das atividades.</p>
+    </div>
+    <div class="filters">
+      <label class="filter">Ano
+        <select id="yearFilter"><option value="">Todos</option></select>
+      </label>
+      <label class="filter">Coordenador
+        <select id="coordFilter"><option value="">Todos</option></select>
+      </label>
+    </div>
+  </div>
+
+  <section class="kpis">
+    <div class="card">
+      <div class="kpi-label">Total de participantes</div>
+      <div id="kpiParticipants" class="kpi-value">0</div>
+    </div>
+    <div class="card">
+      <div class="kpi-label">Total de atividades</div>
+      <div id="kpiActivities" class="kpi-value">0</div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Total de participantes por atividade</h2>
+      <div id="activityChart" class="chart-list"></div>
+    </div>
+    <div class="card">
+      <h2>Ranking dos públicos-alvo</h2>
+      <div id="targetRanking"></div>
+    </div>
+  </section>
+
+  <section class="card insights">
+    <h2>Insights destacados</h2>
+    <ul id="insightsList"></ul>
+  </section>
+
+  <section class="card impactos">
+    <h2>Resumo do impacto das atividades na comunidade</h2>
+    <div id="impactosList" class="impact-grid"></div>
+  </section>
+</div>
+<script>
+const DATA = {"records": [{"Nome": "Desenvolvimento de artefato tecnológico I - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias", "Coordenador": "Marcel William Rocha da Silva", "Ano": "2024", "Participantes": 28, "Parceria com escola?": "Não", "Público alvo": "Comunidade acadêmica do IM", "Eventos relacionados": "Mostra de Inovação Tecnológica em Ciência da Computação: Campus Inteligentes", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "AC788 - DESENVOLVIMENTO DE ARTEFATO TECNOLÓGICO I", "Impactos": "", "Atividade": "Desenvolvimento de artefato tecnológico I - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias (2024)"}, {"Nome": "Desenvolvimento de artefato tecnológico II - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias", "Coordenador": "Marcel William Rocha da Silva", "Ano": "2024", "Participantes": 26, "Parceria com escola?": "Não", "Público alvo": "Comunidade acadêmica do IM", "Eventos relacionados": "2ª Mostra de Inovação Tecnológica em Ciência da Computação: Campus Inteligentes", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "AC789 - DESENVOLVIMENTO DE ARTEFATO TECNOLÓGICO II", "Impactos": "", "Atividade": "Desenvolvimento de artefato tecnológico II - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias (2024)"}, {"Nome": "Introdução à IoT com Arduino", "Coordenador": "Marcel William Rocha da Silva", "Ano": "2024", "Participantes": 20, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "", "Frequência das atividades": "Semestral", "Disciplina atrelada": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I", "Impactos": "", "Atividade": "Introdução à IoT com Arduino (2024)"}, {"Nome": "PJ197-2024 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais", "Coordenador": "Natália Chaves Lessa", "Ano": "2024", "Participantes": 49, "Parceria com escola?": "Não", "Público alvo": "Pessoas físicas e microempresários, principalmente da Baixada Fluminense", "Eventos relacionados": "", "Frequência das atividades": "As atividades foram realizadas ao longo do semestre realizadas em 5 etapas.", "Disciplina atrelada": "TN710 - Engenharia de Software", "Impactos": "Este projeto se mostrou bastante interessante, uma vez que permitiu aos discentes vivenciarem na prática os tópicos abordados na disciplina de Engenharia de Software. O contato com clientes e problemas reais permitiu os discentes analisarem e expandirem seus horizontes. Além disso, os clientes puderam se beneficiar da possibilidade de ter um sistema que apoie seu negócio, permitindo maior produtividade e resultados.", "Atividade": "PJ197-2024 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2024)"}, {"Nome": "PD037-2025 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais", "Coordenador": "Natália Chaves Lessa", "Ano": "2025", "Participantes": 45, "Parceria com escola?": "Não", "Público alvo": "Pessoas físicas e microempresários, principalmente da Baixada Fluminense", "Eventos relacionados": "", "Frequência das atividades": "As atividades foram realizadas ao longo do semestre realizadas em 6 etapas.", "Disciplina atrelada": "TN710 - Engenharia de Software", "Impactos": "Este projeto se mostrou bastante interessante, uma vez que permitiu aos discentes vivenciarem na prática os tópicos abordados na disciplina de Engenharia de Software. O contato com clientes e problemas reais permitiu os discentes analisarem e expandirem seus horizontes. Além disso, os clientes puderam se beneficiar da possibilidade de ter um sistema que apoie seu negócio, permitindo maior produtividade e resultados.", "Atividade": "PD037-2025 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2025)"}, {"Nome": "PD038-2025 - Projeto e Desenvolvimento de Protótipos de Software para Apoiar Soluções de Problemas Sociais e Empresariais", "Coordenador": "Natália Chaves Lessa", "Ano": "2025", "Participantes": 10, "Parceria com escola?": "Não", "Público alvo": "Pessoas físicas e microempresários, principalmente da Baixada Fluminense", "Eventos relacionados": "", "Frequência das atividades": "Semanal", "Disciplina atrelada": "", "Impactos": "De modo geral, o projeto apresentou resultados bastante positivos, uma vez que possibilitou aos discentes uma vivência mais aprofundada e prática dos conteúdos abordados na disciplina de Engenharia de Software. O contato direto com clientes e com problemas reais favoreceu o desenvolvimento de competências analíticas, comunicacionais e técnicas, além de ampliar a compreensão dos discentes acerca do contexto profissional da área. Do ponto de vista dos clientes, o projeto também se mostrou relevante, ao oferecer a perspectiva de desenvolvimento de sistemas capazes de apoiar seus processos e negócios, contribuindo potencialmente para o aumento da produtividade e a melhoria dos resultados.", "Atividade": "PD038-2025 - Projeto e Desenvolvimento de Protótipos de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2025)"}, {"Nome": "C-Ext-2023-1 - Ciclo de Seminários - Computação e seus impactos na Sociedade", "Coordenador": "Ligia Maria Soares Passos", "Ano": "2023", "Participantes": 111, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "Ciclo de Palestras", "Frequência das atividades": "Semanal", "Disciplina atrelada": "Computadores e Sociedade", "Impactos": "", "Atividade": "C-Ext-2023-1 - Ciclo de Seminários - Computação e seus impactos na Sociedade (2023)"}, {"Nome": "C-Ext-2024-1- II - Ciclo de Seminários - Computação e seus impactos na Sociedade", "Coordenador": "Ligia Maria Soares Passos", "Ano": "2024", "Participantes": 90, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "Ciclo de Palestras", "Frequência das atividades": "Semanal", "Disciplina atrelada": "Computadores e Sociedade", "Impactos": "", "Atividade": "C-Ext-2024-1- II - Ciclo de Seminários - Computação e seus impactos na Sociedade (2024)"}, {"Nome": "C-Ext-2025-1 - III - Ciclo de Seminários - Computação e seus impactos na Sociedade", "Coordenador": "Ligia Maria Soares Passos", "Ano": "2025", "Participantes": 81, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "Ciclo de Palestras", "Frequência das atividades": "Semanal", "Disciplina atrelada": "Computadores e Sociedade", "Impactos": "", "Atividade": "C-Ext-2025-1 - III - Ciclo de Seminários - Computação e seus impactos na Sociedade (2025)"}, {"Nome": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I", "Coordenador": "Juliana Zamith", "Ano": "2025-01", "Participantes": 103, "Parceria com escola?": "Não", "Público alvo": "qualquer aluno interessado no tema - O Uso de Ferramentas de IA no ambiente universitário", "Eventos relacionados": "Curso de 5 dias, 10h.", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I", "Impactos": "O curso foi executado conforme o cronograma, com alta participação e engajamento dos alunos. As aulas combinaram teoria e prática, com destaque para a discussão sobre o uso consciente da IA e a exploração de ferramentas como ChatGPT, MathGPT, Mem.Ai, NotebookLM e Elicit. As contribuições dos professores e alunos enriqueceram as discussões. A avaliação final indicou que os objetivos foram alcançados, promovendo autonomia, conhecimento prático e reflexão ética sobre o uso da IA no ambiente acadêmico. Tiveram participantes de outros estados.", "Atividade": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I (2025-01)"}, {"Nome": "DIVULGAÇÃO E POPULARIZAÇÃO DA CIÊNCIA DA COMPUTAÇÃO", "Coordenador": "Juliana Zamith", "Ano": "2025-02", "Participantes": 40, "Parceria com escola?": "Sim", "Público alvo": "Alunos da Escola realizada", "Eventos relacionados": "Semana Nacional de Ciência e Tecnologia", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "DIVULGAÇÃO E POPULARIZAÇÃO DA CIÊNCIA DA COMPUTAÇÃO (", "Impactos": "Apesar dos desafios, o projeto alcançou resultados expressivos e alinhados aos seus objetivos de extensão. A primeira oficina, realizada com aproximadamente 40 estudantes do Ensino Médio, demonstrou elevado engajamento, participação ativa e interesse pela temática. Os alunos interagiram intensamente com os materiais digitais, fizeram perguntas relevantes e mostraram compreensão sobre conceitos básicos de Inteligência Artificial, tomada de decisão algorítmica e impacto social das tecnologias. A segunda oficina, embora com menor duração e público reduzido, também apresentou resultados positivos. Os estudantes que permaneceram ao longo da atividade demonstraram interesse pelas demonstrações práticas e reforçaram, por meio do feedback coletado, a pertinência do uso de ferramentas ilustrativas e atividades lúdicas. Mesmo com tempo limitado, foi possível apresentar conceitos essenciais e obter evidências de aprendizagem e curiosidade tecnológica. No conjunto, as duas oficinas mostraram que a combinação de Computação Desplugada, materiais digitais interativos e exemplos aplicados facilita a compreensão de ideias complexas relacionadas à IA. A adaptação da oficina “Macaco Bom / Macaco Mau”, com a inclusão de uma nova classe, ampliou a discussão sobre classificação e atributos, resultando em maior profundidade conceitual. A produção de materiais próprios e reutilizáveis também constitui um resultado significativo, permitindo a replicação futura da experiência.", "Atividade": "DIVULGAÇÃO E POPULARIZAÇÃO DA CIÊNCIA DA COMPUTAÇÃO (2025-02)"}, {"Nome": "Ciência da Computação em Foco", "Coordenador": "Juliana Zamith", "Ano": "2024-2025", "Participantes": 5, "Parceria com escola?": "Não", "Público alvo": "Público interessado no tema", "Eventos relacionados": "", "Frequência das atividades": "projeto continuado em 2025-2026.", "Disciplina atrelada": "", "Impactos": "O projeto teve como objetivo promover a divulgação acadêmica do curso de Ciência da Computação por meio de ações estratégicas no site institucional e nas redes sociais. Buscou-se criar canais de comunicação mais acessíveis, informativos e engajadores, capazes de apresentar o curso de forma atrativa, aproximar a comunidade acadêmica e ampliar sua visibilidade para o público externo. As atividades desenvolvidas ao longo do projeto contribuíram para ampliar e qualificar a divulgação do curso de Ciência da Computação, aproximando a comunidade acadêmica do público externo e promovendo uma imagem mais clara e acessível do curso. A atualização do site e o planejamento de conteúdo para redes sociais reforçam o papel da comunicação digital como ferramenta estratégica de atração, acolhimento e engajamento de estudantes. Entretanto, como descrito nas dificuldades encontradas a parte de visualiação do site ainda está distante do planejado", "Atividade": "Ciência da Computação em Foco (2024-2025)"}, {"Nome": "Preparação para Olimpíada Brasileira de Informática de estudantes do ensino médio euniversitários da Baixada Fluminense", "Coordenador": "Daniel Fabio Domingues Posner", "Ano": "2024", "Participantes": 36, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "Semana Rural", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I (GRADUAÇÃO)", "Impactos": "Melhora nos fundamentos sobre lógica de programação para os participantes do minicurso. Desenvolvimento de um minicurso em um ambiente de aprendizado virtual (moodle) e a ministração deste minicurso de forma presencial durante a semana rural. Aplicação da prova da primeira fase da Olimpíada Brasileira de Informática para os participantes que quiseram participar.", "Atividade": "Preparação para Olimpíada Brasileira de Informática de estudantes do ensino médio euniversitários da Baixada Fluminense (2024)"}, {"Nome": "Cursos Aplicados de Programação", "Coordenador": "Daniel Fabio Domingues Posner", "Ano": "2025", "Participantes": 57, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I (GRADUAÇÃO)", "Impactos": "Os minicursos desenvolvidos pelos discentes têm um grande potencial de aprimorar conceitos sobre conhecimento de aplicações de programação usando a linguagem Python. Esse conhecimento é particularmente interessante para alunos no início dos cursos de graduação que geralmente só tem contato com linguagens como C. Dessa forma, os minicursos agregam novos conhecimentos aos participantes que serão úteis no futuro durante a sua carreira.", "Atividade": "Cursos Aplicados de Programação (2025)"}, {"Nome": "Cursos Aplicados de Programação", "Coordenador": "Daniel Fabio Domingues Posner", "Ano": "2025", "Participantes": 57, "Parceria com escola?": "Não", "Público alvo": "Alunos da UFRRJ", "Eventos relacionados": "", "Frequência das atividades": "Evento Único", "Disciplina atrelada": "AC786 - LECIONAÇÃO DE CURSOS DE EXTENSÃO II (GRADUAÇÃO)", "Impactos": "Os minicursos desenvolvidos pelos discentes têm um grande potencial de aprimorar conceitos sobre conhecimento de aplicações de programação usando a linguagem Python. Esse conhecimento é particularmente interessante para alunos no início dos cursos de graduação que geralmente só tem contato com linguagens como C. Dessa forma, os minicursos agregam novos conhecimentos aos participantes que serão úteis no futuro durante a sua carreira.", "Atividade": "Cursos Aplicados de Programação (2025)"}], "activity": [{"Atividade": "Cursos Aplicados de Programação (2025)", "Nome": "Cursos Aplicados de Programação", "Ano": "2025", "Participantes": 114}, {"Atividade": "C-Ext-2023-1 - Ciclo de Seminários - Computação e seus impactos na Sociedade (2023)", "Nome": "C-Ext-2023-1 - Ciclo de Seminários - Computação e seus impactos na Sociedade", "Ano": "2023", "Participantes": 111}, {"Atividade": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I (2025-01)", "Nome": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I", "Ano": "2025-01", "Participantes": 103}, {"Atividade": "C-Ext-2024-1- II - Ciclo de Seminários - Computação e seus impactos na Sociedade (2024)", "Nome": "C-Ext-2024-1- II - Ciclo de Seminários - Computação e seus impactos na Sociedade", "Ano": "2024", "Participantes": 90}, {"Atividade": "C-Ext-2025-1 - III - Ciclo de Seminários - Computação e seus impactos na Sociedade (2025)", "Nome": "C-Ext-2025-1 - III - Ciclo de Seminários - Computação e seus impactos na Sociedade", "Ano": "2025", "Participantes": 81}, {"Atividade": "PJ197-2024 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2024)", "Nome": "PJ197-2024 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais", "Ano": "2024", "Participantes": 49}, {"Atividade": "PD037-2025 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2025)", "Nome": "PD037-2025 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais", "Ano": "2025", "Participantes": 45}, {"Atividade": "DIVULGAÇÃO E POPULARIZAÇÃO DA CIÊNCIA DA COMPUTAÇÃO (2025-02)", "Nome": "DIVULGAÇÃO E POPULARIZAÇÃO DA CIÊNCIA DA COMPUTAÇÃO", "Ano": "2025-02", "Participantes": 40}, {"Atividade": "Preparação para Olimpíada Brasileira de Informática de estudantes do ensino médio euniversitários da Baixada Fluminense (2024)", "Nome": "Preparação para Olimpíada Brasileira de Informática de estudantes do ensino médio euniversitários da Baixada Fluminense", "Ano": "2024", "Participantes": 36}, {"Atividade": "Desenvolvimento de artefato tecnológico I - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias (2024)", "Nome": "Desenvolvimento de artefato tecnológico I - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias", "Ano": "2024", "Participantes": 28}, {"Atividade": "Desenvolvimento de artefato tecnológico II - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias (2024)", "Nome": "Desenvolvimento de artefato tecnológico II - Smart Campus: Soluções computacionais inteligentes para comunidades acadêmicas universitárias", "Ano": "2024", "Participantes": 26}, {"Atividade": "Introdução à IoT com Arduino (2024)", "Nome": "Introdução à IoT com Arduino", "Ano": "2024", "Participantes": 20}, {"Atividade": "PD038-2025 - Projeto e Desenvolvimento de Protótipos de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2025)", "Nome": "PD038-2025 - Projeto e Desenvolvimento de Protótipos de Software para Apoiar Soluções de Problemas Sociais e Empresariais", "Ano": "2025", "Participantes": 10}, {"Atividade": "Ciência da Computação em Foco (2024-2025)", "Nome": "Ciência da Computação em Foco", "Ano": "2024-2025", "Participantes": 5}], "target": [{"Público alvo": "Alunos da UFRRJ", "Participantes": 452}, {"Público alvo": "Pessoas físicas e microempresários, principalmente da Baixada Fluminense", "Participantes": 104}, {"Público alvo": "qualquer aluno interessado no tema - O Uso de Ferramentas de IA no ambiente universitário", "Participantes": 103}, {"Público alvo": "Comunidade acadêmica do IM", "Participantes": 54}, {"Público alvo": "Alunos da Escola realizada", "Participantes": 40}, {"Público alvo": "Público interessado no tema", "Participantes": 5}], "impactos": [{"Atividade": "PJ197-2024 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2024)", "Coordenador": "Natália Chaves Lessa", "Ano": "2024", "Participantes": 49, "Impactos": "Este projeto se mostrou bastante interessante, uma vez que permitiu aos discentes vivenciarem na prática os tópicos abordados na disciplina de Engenharia de Software. O contato com clientes e problemas reais permitiu os discentes analisarem e expandirem seus horizontes. Além disso, os clientes puderam se beneficiar da possibilidade de ter um sistema que apoie seu negócio, permitindo maior produtividade e resultados."}, {"Atividade": "PD037-2025 - Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2025)", "Coordenador": "Natália Chaves Lessa", "Ano": "2025", "Participantes": 45, "Impactos": "Este projeto se mostrou bastante interessante, uma vez que permitiu aos discentes vivenciarem na prática os tópicos abordados na disciplina de Engenharia de Software. O contato com clientes e problemas reais permitiu os discentes analisarem e expandirem seus horizontes. Além disso, os clientes puderam se beneficiar da possibilidade de ter um sistema que apoie seu negócio, permitindo maior produtividade e resultados."}, {"Atividade": "PD038-2025 - Projeto e Desenvolvimento de Protótipos de Software para Apoiar Soluções de Problemas Sociais e Empresariais (2025)", "Coordenador": "Natália Chaves Lessa", "Ano": "2025", "Participantes": 10, "Impactos": "De modo geral, o projeto apresentou resultados bastante positivos, uma vez que possibilitou aos discentes uma vivência mais aprofundada e prática dos conteúdos abordados na disciplina de Engenharia de Software. O contato direto com clientes e com problemas reais favoreceu o desenvolvimento de competências analíticas, comunicacionais e técnicas, além de ampliar a compreensão dos discentes acerca do contexto profissional da área. Do ponto de vista dos clientes, o projeto também se mostrou relevante, ao oferecer a perspectiva de desenvolvimento de sistemas capazes de apoiar seus processos e negócios, contribuindo potencialmente para o aumento da produtividade e a melhoria dos resultados."}, {"Atividade": "AC785 - LECIONAÇÃO DE CURSOS DE EXTENSÃO I (2025-01)", "Coordenador": "Juliana Zamith", "Ano": "2025-01", "Participantes": 103, "Impactos": "O curso foi executado conforme o cronograma, com alta participação e engajamento dos alunos. As aulas combinaram teoria e prática, com destaque para a discussão sobre o uso consciente da IA e a exploração de ferramentas como ChatGPT, MathGPT, Mem.Ai, NotebookLM e Elicit. As contribuições dos professores e alunos enriqueceram as discussões. A avaliação final indicou que os objetivos foram alcançados, promovendo autonomia, conhecimento prático e reflexão ética sobre o uso da IA no ambiente acadêmico. Tiveram participantes de outros estados."}, {"Atividade": "DIVULGAÇÃO E POPULARIZAÇÃO DA CIÊNCIA DA COMPUTAÇÃO (2025-02)", "Coordenador": "Juliana Zamith", "Ano": "2025-02", "Participantes": 40, "Impactos": "Apesar dos desafios, o projeto alcançou resultados expressivos e alinhados aos seus objetivos de extensão. A primeira oficina, realizada com aproximadamente 40 estudantes do Ensino Médio, demonstrou elevado engajamento, participação ativa e interesse pela temática. Os alunos interagiram intensamente com os materiais digitais, fizeram perguntas relevantes e mostraram compreensão sobre conceitos básicos de Inteligência Artificial, tomada de decisão algorítmica e impacto social das tecnologias. A segunda oficina, embora com menor duração e público reduzido, também apresentou resultados positivos. Os estudantes que permaneceram ao longo da atividade demonstraram interesse pelas demonstrações práticas e reforçaram, por meio do feedback coletado, a pertinência do uso de ferramentas ilustrativas e atividades lúdicas. Mesmo com tempo limitado, foi possível apresentar conceitos essenciais e obter evidências de aprendizagem e curiosidade tecnológica. No conjunto, as duas oficinas mostraram que a combinação de Computação Desplugada, materiais digitais interativos e exemplos aplicados facilita a compreensão de ideias complexas relacionadas à IA. A adaptação da oficina “Macaco Bom / Macaco Mau”, com a inclusão de uma nova classe, ampliou a discussão sobre classificação e atributos, resultando em maior profundidade conceitual. A produção de materiais próprios e reutilizáveis também constitui um resultado significativo, permitindo a replicação futura da experiência."}, {"Atividade": "Ciência da Computação em Foco (2024-2025)", "Coordenador": "Juliana Zamith", "Ano": "2024-2025", "Participantes": 5, "Impactos": "O projeto teve como objetivo promover a divulgação acadêmica do curso de Ciência da Computação por meio de ações estratégicas no site institucional e nas redes sociais. Buscou-se criar canais de comunicação mais acessíveis, informativos e engajadores, capazes de apresentar o curso de forma atrativa, aproximar a comunidade acadêmica e ampliar sua visibilidade para o público externo. As atividades desenvolvidas ao longo do projeto contribuíram para ampliar e qualificar a divulgação do curso de Ciência da Computação, aproximando a comunidade acadêmica do público externo e promovendo uma imagem mais clara e acessível do curso. A atualização do site e o planejamento de conteúdo para redes sociais reforçam o papel da comunicação digital como ferramenta estratégica de atração, acolhimento e engajamento de estudantes. Entretanto, como descrito nas dificuldades encontradas a parte de visualiação do site ainda está distante do planejado"}, {"Atividade": "Preparação para Olimpíada Brasileira de Informática de estudantes do ensino médio euniversitários da Baixada Fluminense (2024)", "Coordenador": "Daniel Fabio Domingues Posner", "Ano": "2024", "Participantes": 36, "Impactos": "Melhora nos fundamentos sobre lógica de programação para os participantes do minicurso. Desenvolvimento de um minicurso em um ambiente de aprendizado virtual (moodle) e a ministração deste minicurso de forma presencial durante a semana rural. Aplicação da prova da primeira fase da Olimpíada Brasileira de Informática para os participantes que quiseram participar."}, {"Atividade": "Cursos Aplicados de Programação (2025)", "Coordenador": "Daniel Fabio Domingues Posner", "Ano": "2025", "Participantes": 57, "Impactos": "Os minicursos desenvolvidos pelos discentes têm um grande potencial de aprimorar conceitos sobre conhecimento de aplicações de programação usando a linguagem Python. Esse conhecimento é particularmente interessante para alunos no início dos cursos de graduação que geralmente só tem contato com linguagens como C. Dessa forma, os minicursos agregam novos conhecimentos aos participantes que serão úteis no futuro durante a sua carreira."}, {"Atividade": "Cursos Aplicados de Programação (2025)", "Coordenador": "Daniel Fabio Domingues Posner", "Ano": "2025", "Participantes": 57, "Impactos": "Os minicursos desenvolvidos pelos discentes têm um grande potencial de aprimorar conceitos sobre conhecimento de aplicações de programação usando a linguagem Python. Esse conhecimento é particularmente interessante para alunos no início dos cursos de graduação que geralmente só tem contato com linguagens como C. Dessa forma, os minicursos agregam novos conhecimentos aos participantes que serão úteis no futuro durante a sua carreira."}], "years": ["2023", "2024", "2024-2025", "2025", "2025-01", "2025-02"], "coords": ["Daniel Fabio Domingues Posner", "Juliana Zamith", "Ligia Maria Soares Passos", "Marcel William Rocha da Silva", "Natália Chaves Lessa"], "insights": ["758 participantes registrados nas atividades analisadas.", "14 atividades únicas identificadas pelo par Nome + Ano.", "A atividade com maior público foi “Cursos Aplicados de Programação”, em 2025, com 114 participantes.", "O público-alvo com maior alcance foi “Alunos da UFRRJ”, concentrando 452 participantes.", "9 registros apresentam descrições de impacto na comunidade, com destaque para aprendizagem prática, aproximação com problemas reais e divulgação científica."]};
+const yearFilter = document.getElementById('yearFilter');
+const coordFilter = document.getElementById('coordFilter');
+
+function fillSelect(sel, values) {
+  values.forEach(v => {
+    const o = document.createElement('option');
+    o.value = v; o.textContent = v;
+    sel.appendChild(o);
+  });
+}
+fillSelect(yearFilter, DATA.years);
+fillSelect(coordFilter, DATA.coords);
+
+function filteredRecords() {
+  const y = yearFilter.value, c = coordFilter.value;
+  return DATA.records.filter(r => (!y || r.Ano === y) && (!c || r.Coordenador === c));
+}
+function groupSum(records, keyFn) {
+  const map = new Map();
+  records.forEach(r => {
+    const k = keyFn(r);
+    if(!k) return;
+    map.set(k, (map.get(k)||0) + Number(r.Participantes||0));
+  });
+  return [...map.entries()].map(([key,value])=>({key,value})).sort((a,b)=>b.value-a.value);
+}
+function uniqueActivities(records) {
+  return new Set(records.map(r => r.Atividade)).size;
+}
+function render() {
+  const rec = filteredRecords();
+  const total = rec.reduce((s,r)=>s+Number(r.Participantes||0),0);
+  document.getElementById('kpiParticipants').textContent = total.toLocaleString('pt-BR');
+  document.getElementById('kpiActivities').textContent = uniqueActivities(rec).toLocaleString('pt-BR');
+
+  const act = groupSum(rec, r => r.Atividade);
+  const maxAct = Math.max(...act.map(d=>d.value), 1);
+  document.getElementById('activityChart').innerHTML = act.map(d => `
+    <div class="bar-row">
+      <div>
+        <div class="bar-label" title="${d.key}">${d.key}</div>
+        <div class="bar-wrap"><div class="bar" style="width:${(d.value/maxAct)*100}%"></div></div>
+      </div>
+      <div class="value">${d.value.toLocaleString('pt-BR')}</div>
+    </div>`).join('');
+
+  const targets = groupSum(rec, r => r["Público alvo"]).slice(0,8);
+  document.getElementById('targetRanking').innerHTML = targets.map((d,i)=>`
+    <div class="rank-item">
+      <div class="rank-title">${i+1}. ${d.key}</div>
+      <div class="rank-value">${d.value.toLocaleString('pt-BR')} participantes</div>
+    </div>`).join('');
+
+  const topAct = act[0];
+  const topTarget = targets[0];
+  const impactCount = rec.filter(r => r.Impactos && r.Impactos.trim()).length;
+  const insights = [
+    `${total.toLocaleString('pt-BR')} participantes registrados no recorte selecionado.`,
+    `${uniqueActivities(rec).toLocaleString('pt-BR')} atividades únicas identificadas pelo par Nome + Ano.`,
+    topAct ? `Maior alcance por atividade: ${topAct.key}, com ${topAct.value.toLocaleString('pt-BR')} participantes.` : '',
+    topTarget ? `Público-alvo mais alcançado: ${topTarget.key}, com ${topTarget.value.toLocaleString('pt-BR')} participantes.` : '',
+    `${impactCount.toLocaleString('pt-BR')} registros trazem impactos descritos, indicando efeitos como aprendizagem prática, engajamento e aproximação com a comunidade.`
+  ].filter(Boolean);
+  document.getElementById('insightsList').innerHTML = insights.map(x=>`<li>${x}</li>`).join('');
+
+  const impacts = rec.filter(r => r.Impactos && r.Impactos.trim());
+  document.getElementById('impactosList').innerHTML = impacts.map(r => `
+    <article class="impact-card">
+      <div class="impact-title">${r.Atividade}</div>
+      <div class="impact-meta">${r.Ano} · ${r.Coordenador} · ${Number(r.Participantes||0).toLocaleString('pt-BR')} participantes</div>
+      <div class="impact-text">${r.Impactos}</div>
+    </article>`).join('');
+}
+yearFilter.addEventListener('change', render);
+coordFilter.addEventListener('change', render);
+render();
+</script>
+</body>
+</html>
