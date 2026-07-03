@@ -1,0 +1,21 @@
+Total de respostas = COUNTROWS('dados_originais_limpos')
+
+Tipo de escola mais frequente =
+VAR TabelaTipos =
+    SUMMARIZE(
+        'dados_originais_limpos',
+        'dados_originais_limpos'[Tipo de escola],
+        "Qtd", COUNTROWS('dados_originais_limpos')
+    )
+RETURN
+    MAXX(TOPN(1, TabelaTipos, [Qtd], DESC), 'dados_originais_limpos'[Tipo de escola])
+
+Qtd tipo mais frequente =
+VAR TabelaTipos =
+    SUMMARIZE(
+        'dados_originais_limpos',
+        'dados_originais_limpos'[Tipo de escola],
+        "Qtd", COUNTROWS('dados_originais_limpos')
+    )
+RETURN
+    MAXX(TOPN(1, TabelaTipos, [Qtd], DESC), [Qtd])
