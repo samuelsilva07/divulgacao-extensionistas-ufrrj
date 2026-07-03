@@ -73,7 +73,11 @@ header {
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
+<<<<<<< HEAD
     padding: 6px 20px;
+=======
+    padding: 0 20px;
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
 }
 
 .logo {
@@ -96,7 +100,11 @@ header {
 }
 
 .logo .text {
+<<<<<<< HEAD
     font-size: 16px;
+=======
+    font-size: 14px;
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
     font-weight: normal;
 }
 
@@ -133,21 +141,35 @@ nav a {
 
 /* Banner */
 .banner {
+<<<<<<< HEAD
     background-color: white; /* Muda a cor de fundo para branco */
     color: var(--primary-blue); /* Muda a cor do texto para azul */
     padding: 20px 0 6px 0;
+=======
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 60px 0;
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
     text-align: left;
 }
 
 .banner h1 {
+<<<<<<< HEAD
     color: var(--primary-blue); /* Muda a cor específica do título (h1) para azul */
+=======
+    color: white;
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
     font-size: 36px;
     margin: 0;
 }
 
 /* Seções "Sobre" */
 .about {
+<<<<<<< HEAD
     padding: 40px 0;
+=======
+    padding: 60px 0;
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
 }
 
 .about.project {
@@ -195,6 +217,7 @@ nav a {
     gap: 30px;
 }
 
+<<<<<<< HEAD
 /* Garante que o desfoque não vaze para fora do card */
 .activity-card {
     background-color: white;
@@ -226,6 +249,25 @@ nav a {
 .activity-card:hover .dashboard-teaser {
     filter: blur(0px) brightness(1); /* Tira o desfoque */
     transform: scale(1.05); /* Dá um zoom bem suave de 5% */
+=======
+.activity-card {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.activity-card .image-placeholder {
+    height: 250px;
+    background-color: #ddd;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.activity-card .content {
+    padding: 30px;
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
 }
 
 .activity-card h3 {
@@ -287,6 +329,7 @@ footer a {
     margin-top: 40px;
     border-top: 1px solid #335577;
     padding-top: 15px;
+<<<<<<< HEAD
 }
 
 /* Seção de Pesquisas (Lado a Lado) */
@@ -335,4 +378,6 @@ footer a {
 /* Cria o espaço interno (margem) para os textos não colarem na borda */
 .activity-card .content {
     padding: 30px; 
+=======
+>>>>>>> 6da8f27771e1300bbd7dbc413a3c9d3a6c22dc16
 }
