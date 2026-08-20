@@ -22,7 +22,7 @@ Após a realização da pesquisa, foi necessário um tratamento dos dados obtido
 
 ### 🛠️ Construção do site
 
-Para sintetizar os resultados dos processos anteriores, uma página web foi produzida para informar o objetivo do trabalho realizado e apresentar os dados e dashboards obtidos através das pesquisas, bem como divulgar os programas realizados por cada atividade extensionista.
+Para sintetizar os resultados dos processos anteriores, uma página web foi produzida para informar o objetivo do trabalho realizado e apresentar os dados/dashboards obtidos através das pesquisas, assim como divulgar os programas realizados por cada atividade extensionista.
 
 
 ## 💻 Tecnologias utilizadas
