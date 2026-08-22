@@ -37,7 +37,9 @@ O link da página web pode ser acessado [aqui.](https://samuelsilva07.github.io/
 
 ## 👤 Participantes do projeto
 
-**Coordenadora do projeto:** Juliana Mendes Nascente e Silva Zamith
+### Coordenadora
+
+- Juliana Mendes Nascente e Silva Zamith
 
 ### Coleta de dados
 
