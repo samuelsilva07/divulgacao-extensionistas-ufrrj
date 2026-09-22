@@ -51,5 +51,13 @@ function exibirAtividade(atividade) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarArquivo("atividades.json", 1);
+    const parametros = new URLSearchParams(window.location.search);
+    const id = Number(parametros.get("id"));
+
+    if (!Number.isInteger(id)) {
+        console.error("ERRO: ID da atividade inválido ou ausente.");
+        return;
+    }
+
+    carregarArquivo("atividades.json", id);
 });

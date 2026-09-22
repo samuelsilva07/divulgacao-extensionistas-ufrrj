@@ -18,7 +18,7 @@ function carregarAtividades(dados) {
     const container = document.getElementById("container");
     for (let atividade of dados)
         container.innerHTML += `
-        <a class="idx-card "href="ciclo-de-seminarios-computacao-e-seus-impactos-na-sociedade/ciclo-de-seminarios-computacao-e-seus-impactos-na-sociedade.html">
+        <a class="idx-card "href="atividade-base.html?id=${atividade.id}">
             <strong>${atividade.nome}</strong>
             <span>${atividade.participantes} participantes • ${atividade.periodo}</span>
         </a>`
