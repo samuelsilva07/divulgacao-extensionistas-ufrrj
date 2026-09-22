@@ -18,7 +18,7 @@ function carregarAtividades(dados) {
     const container = document.getElementById("container");
     for (let atividade of dados)
         container.innerHTML += `
-        <a class="idx-card "href="atividade-base.html?id=${atividade.id}">
+        <a class="idx-card "href="atividade-base.html?id=${atividade.id}" target="_top" rel="noopener noreferrer previous">
             <strong>${atividade.nome}</strong>
             <span>${atividade.participantes} participantes • ${atividade.periodo}</span>
         </a>`
