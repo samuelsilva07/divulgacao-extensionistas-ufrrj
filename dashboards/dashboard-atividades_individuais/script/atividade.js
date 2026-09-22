@@ -59,5 +59,5 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    carregarArquivo("atividades.json", id);
+    carregarArquivo("script/atividades.json", id);
 });

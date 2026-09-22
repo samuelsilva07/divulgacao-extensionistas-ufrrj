@@ -25,5 +25,5 @@ function carregarAtividades(dados) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarArquivo("atividades.json");
+    carregarArquivo("script/atividades.json");
 });
