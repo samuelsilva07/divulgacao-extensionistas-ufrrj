@@ -21,7 +21,7 @@ function carregarAtividade(dados, id) {
 
 function buscarAtividade(dados, id) {
     for(const item of dados) 
-        if (item.id == id) {
+        if (item.id === id) {
             console.log("Atividade encontrada.");
             return item; 
         }
