@@ -57,7 +57,7 @@
         "participantes": 94,
         "periodo": "2024, 2025",
         "descricao": "Nesta atividade, os alunos desenvolveram uma atividade voltada ao levantamento, análise e modelagem de requisitos para o desenvolvimento de sistemas de software que atendam às necessidades de organizações e da sociedade. O foco é compreender problemas reais, propor soluções tecnológicas e utilizar técnicas de modelagem, contribuindo para a criação de sistemas eficientes, organizados e alinhados às demandas dos usuários.",
-        "dashboard": "elicitacao-e-modelagem-de-sistemas-de-software-para-apoiar-solucoes-de-problemas/elicitacao-e-modelagem-de-sistemas-de-software-para-apoiar-solucoes-de-problemas.html"
+        "dashboard": "elicitacao-e-modelagem-de-sistemas/elicitacao-e-modelagem-de-sistemas.html"
     },
     {
         "id": 7,
@@ -87,6 +87,6 @@
         "participantes": 10,
         "periodo": "2025",
         "descricao": "Nesta atividade, os alunos desenvolveram uma atividade voltada ao projeto, desenvolvimento e validação de protótipos de software para solucionar problemas enfrentados por organizações e pela sociedade. O foco é aplicar conceitos de engenharia de software, programação e design de sistemas na criação de soluções funcionais, promovendo inovação, eficiência e atendimento às necessidades dos usuários.",
-        "dashboard": "projeto-e-desenvolvimento-de-prototipos-de-software-para-apoiar-solucoes-de-problemas/projeto-e-desenvolvimento-de-prototipos-de-software-para-apoiar-solucoes-de-problemas.html"
+        "dashboard": "projeto-e-desenvolvimento-de-prototipos/projeto-e-desenvolvimento-de-prototipos.html"
     }
 ]
