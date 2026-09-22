@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "nome": "Ciclo de Seminários: Computação e seus Impactos na Sociedade",
+        "coordenador": "Ligia Maria Soares Passos",
+        "cargaHoraria": 45,
+        "participantes": 282,
+        "periodo": "2023, 2024, 2025",
+        "descricao": "Nesta atividade, os alunos desenvolveram, junto com a disciplina de Computadores e Sociedade, apresentações relacionadas aos temas abordados.",
+        "dashboard": "ciclo-de-seminarios-computacao-e-seus-impactos-na-sociedade/ciclo-de-seminarios-computacao-e-seus-impactos-na-sociedade.html"
+    },
+    {
+        "id": 2,
+        "nome": "Ciência da Computação em Foco",
+        "coordenador": "Juliana Zamith",
+        "cargaHoraria": 90,
+        "participantes": 5,
+        "periodo": "2024, 2025",
+        "descricao": "Nesta atividade, os alunos desenvolveram e promoveram uma apresentação para a divulgação do curso de Ciência da Computação.",
+        "dashboard": "ciencia-da-computacao-em-foco/ciencia-da-computacao-em-foco.html"
+    },
+    {
+        "id": 3,
+        "nome": "Desenvolvimento de Artefato Tecnológico I",
+        "coordenador": "Marcel William Rocha da Silva",
+        "cargaHoraria": 90,
+        "participantes": 28,
+        "periodo": "2024",
+        "descricao": "Nesta atividade, os alunos desenvolveram a primeira etapa do desenvolvimento de um projeto tecnológico. O foco é identificar um problema, levantar requisitos, planejar a solução e criar um protótipo ou versão inicial do artefato.",
+        "dashboard": "desenvolvimento-de-artefato-tecnologico-i/desenvolvimento-de-artefato-tecnologico-i.html"
+    },    
+    {
+        "id": 4,
+        "nome": "Desenvolvimento de Artefato Tecnológico II",
+        "coordenador": "Marcel William Rocha da Silva",
+        "cargaHoraria": 90,
+        "participantes": 26,
+        "periodo": "2024",
+        "descricao": "Nesta atividade, os alunos desenvolveram como continuação da primeira etapa, a implementação, testes, validação e refinamento do artefato desenvolvido. Ao final, espera-se um produto mais completo e funcional.",
+        "dashboard": "desenvolvimento-de-artefato-tecnologico-ii/desenvolvimento-de-artefato-tecnologico-ii.html"
+    },
+    {
+        "id": 5,
+        "nome": "Divulgação e Popularização da Ciência da Computação",
+        "coordenador": "Juliana Zamith",
+        "cargaHoraria": 90,
+        "participantes": 40,
+        "periodo": "2025",
+        "descricao": "Nesta atividade, os alunos desenvolveram uma atividade voltada à aproximação da Ciência da Computação com a sociedade por meio da produção e divulgação de conteúdos acessíveis, como palestras, oficinas, minicursos, eventos, materiais educativos e ações de extensão. O objetivo é disseminar o conhecimento científico, despertar o interesse pela computação e incentivar a inclusão tecnológica em diferentes públicos.",
+        "dashboard": "divulgacao-e-popularizacao-da-ciencia-da-computacao/divulgacao-e-popularizacao-da-ciencia-da-computacao.html"
+    },
+    {
+        "id": 6,
+        "nome": "Elicitação e Modelagem de Sistemas de Software para Apoiar Soluções de Problemas Sociais e Empresariais",
+        "coordenador": "Natália Chaves Lessa",
+        "cargaHoraria": 60,
+        "participantes": 94,
+        "periodo": "2024, 2025",
+        "descricao": "Nesta atividade, os alunos desenvolveram uma atividade voltada ao levantamento, análise e modelagem de requisitos para o desenvolvimento de sistemas de software que atendam às necessidades de organizações e da sociedade. O foco é compreender problemas reais, propor soluções tecnológicas e utilizar técnicas de modelagem, contribuindo para a criação de sistemas eficientes, organizados e alinhados às demandas dos usuários.",
+        "dashboard": "elicitacao-e-modelagem-de-sistemas-de-software-para-apoiar-solucoes-de-problemas/elicitacao-e-modelagem-de-sistemas-de-software-para-apoiar-solucoes-de-problemas.html"
+    },
+    {
+        "id": 7,
+        "nome": "Lecionação de Cursos de Extensão I",
+        "coordenador": "Juliana Zamith",
+        "cargaHoraria": 90,
+        "participantes": 216,
+        "periodo": "2024, 2025",
+        "descricao": "Nesta atividade, os alunos tiveram a oportunidade de participar como instrutores ou monitores em cursos de extensão, compartilhando conhecimentos com a comunidade e desenvolvendo habilidades de comunicação, didática e liderança.",
+        "dashboard": "lecionacao-de-cursos-de-extensao-i/lecionacao-de-cursos-de-extensao-i.html"
+    },
+    {
+        "id": 8,
+        "nome": "Lecionação de Cursos de Extensão II",
+        "coordenador": "Juliana Zamith",
+        "cargaHoraria": 90,
+        "participantes": 57,
+        "periodo": "2025",
+        "descricao": "Nesta atividade, os alunos desenvolveram um aprofundamento da experiência de ensino, assumindo maior responsabilidade no planejamento, organização e condução de cursos voltados ao público interno ou externo.",
+        "dashboard": "lecionacao-de-cursos-de-extensao-ii/lecionacao-de-cursos-de-extensao-ii.html"
+    },
+    {
+        "id": 9,
+        "nome": "Projeto e Desenvolvimento de Protótipos de Software para Apoiar Soluções de Problemas Sociais e Empresariais",
+        "coordenador": "Natália Chaves Lessa",
+        "cargaHoraria": 60,
+        "participantes": 10,
+        "periodo": "2025",
+        "descricao": "Nesta atividade, os alunos desenvolveram uma atividade voltada ao projeto, desenvolvimento e validação de protótipos de software para solucionar problemas enfrentados por organizações e pela sociedade. O foco é aplicar conceitos de engenharia de software, programação e design de sistemas na criação de soluções funcionais, promovendo inovação, eficiência e atendimento às necessidades dos usuários.",
+        "dashboard": "projeto-e-desenvolvimento-de-prototipos-de-software-para-apoiar-solucoes-de-problemas/projeto-e-desenvolvimento-de-prototipos-de-software-para-apoiar-solucoes-de-problemas.html"
+    }
+]
