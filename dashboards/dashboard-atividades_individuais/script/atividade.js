@@ -36,8 +36,8 @@ const dashboard = document.getElementById("dashboard");
 
 function exibirAtividade(atividade) {
     nome.innerText = atividade.nome;
-    coordenador.innerHTML = `Coordenador(a): ${atividade.coordenador}`;
-    cargaHoraria.innerHTML = `Carga horária: ${atividade.cargaHoraria}h`;
+    coordenador.innerHTML += `${atividade.coordenador}`;
+    cargaHoraria.innerHTML += `${atividade.cargaHoraria}h`;
     descricao.innerText = atividade.descricao;
     dashboard.innerHTML = `
         <iframe 
