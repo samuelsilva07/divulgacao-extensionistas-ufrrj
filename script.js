@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframeContent.body?.scrollHeight ?? 0
             );
 
-            frame.style.height = `${altura + 8}px`;
+            frame.style.height = `${altura + 1}px`;
         }
 
         frame.addEventListener("load", () => {
