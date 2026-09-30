@@ -65,14 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function ajustarAltura() {
             const iframeContent = frame.contentDocument;
+            frame.style.height = "600px";
             if (!iframeContent) return;
 
             const altura = Math.max(
                 iframeContent.documentElement.scrollHeight,
-                iframeContent.body.scrollHeight || 0
+                iframeContent.body?.scrollHeight ?? 0
             );
 
-            frame.style.height = `${altura}px`;
+            frame.style.height = `${altura + 8}px`;
         }
 
         frame.addEventListener("load", () => {
