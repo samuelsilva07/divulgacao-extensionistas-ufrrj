@@ -55,4 +55,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // =============================================
+    // 3. RESPONSIVIDADE: Ajuste da altura dos iframes
+    // =============================================
+
+    const dashboards = document.querySelectorAll("iframe.dashboard"); 
+    dashboards.forEach((frame) => {
+        let observer;
+
+        function ajustarAltura() {
+            const iframeContent = frame.contentDocument;
+            if (!iframeContent) return;
+
+            const altura = Math.max(
+                iframeContent.documentElement.scrollHeight,
+                iframeContent.body.scrollHeight || 0
+            );
+
+            frame.style.height = `${altura}px`;
+        }
+
+        frame.addEventListener("load", () => {
+            observer?.disconnect();
+
+            const content = frame.contentDocument;
+            if (!content) return;
+
+            observer = new ResizeObserver(ajustarAltura);
+            observer.observe(content.documentElement);
+
+            if (content.body) {
+                observer.observe(content.body);
+            }
+
+            ajustarAltura();
+        });
+
+        window.addEventListener("resize", ajustarAltura);
+    });
 });

@@ -179,7 +179,7 @@ nav a {
 /* Seção Atividades */
 .activities {
     background-color: var(--light-creme);
-    padding: 60px 0;
+    padding: 1em;
 }
 
 .activities h2 {
@@ -312,6 +312,27 @@ footer a {
 .pesquisas-section {
     padding: 60px 0;
     background-color: var(--light-creme); 
+}
+
+.dashboard {
+    width: 100%;
+    height: auto;
+    border: 1px solid #E6E8EF;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(68,79,108,.08);
+}
+
+.dashboard-geral {
+    height: 4800px;
+}
+
+.dashboard-escolas {
+    height: 1200px;
+}
+
+.dashboard-atividades {
+    height: 1100px;
 }
 
 .dashboard-wrapper {
