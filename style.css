@@ -189,11 +189,11 @@ nav a {
 
 .dados-menu {
     text-align: center;
+    margin: auto;
 }
 
 .dados-nav {
     display: flex;
-    margin: auto;
     align-items: center;
     justify-content: center;
     padding: 1em;
@@ -213,8 +213,13 @@ nav a {
     cursor: pointer;
 }
 
+#dashboards-placeholder {
+    padding: 2em 0 1em;
+}
+
 .dados-dashboards {
     padding: 30px 0;
+    text-align: center;
 }
 
 .dashboard {
