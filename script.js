@@ -94,4 +94,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener("resize", ajustarAltura);
     });
+
+    
 });
+
+// =============================================
+// 4. DADOS: Seleção do dashboard exibido
+// =============================================
+
+function exibirDados(id) {
+    const dados = document.getElementsByClassName("dashboard-display");
+    
+    for (let article of dados) {
+        if (article.id === id){
+            article.style.display = 'block';
+        } else {
+            article.style.display = 'none';
+        }
+    }
+}
