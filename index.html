@@ -15,11 +15,11 @@
                 <img src="images/rural_logo_branco.png" alt="Logo da UFRRJ">
                 <span class="text">UFRRJ<br>Instituto Multidisciplinar</span>
             </div>
-            <menu>
-                <nav>
+            <menu class="header-menu">
+                <nav class="header-nav">
                     <a href="#sobre-o-curso">Curso</a>
                     <a href="#sobre-o-projeto">Projeto</a>
-                    <a href="#atividades">Atividades</a>
+                    <a href="#dados">Dados</a>
                     <a href="#contato">Contato</a>
                 </nav>
                 <div class="user-actions">
@@ -39,7 +39,6 @@
 
         <section id="sobre-o-curso" class="about">
             <div class="container">
-
                 <h2>SOBRE O CURSO</h2>
                 <p>O curso de <strong>Ciência da Computação</strong> é uma das graduações mais dinâmicas e fundamentais
                     da era digital. Ao contrário do que muitos pensam, não se trata apenas de "consertar computadores"
@@ -82,29 +81,34 @@
             </div>
         </section>
 
-        <section class="dados">
-            <article id="pesquisas" class="pesquisas-section">
-                <div class="container">
-                    <div class="dashboard-wrapper">
-                        <h2 class="dashboard-title">VISÃO GERAL DAS ATIVIDADES NA NOSSA UNIVERSIDADE</h2>
-                        <iframe src="dashboards/dashboard_atividades/dashboard_pesquisa_atividades.html" class="dashboard">
-                        </iframe>
-                    </div>
-                    <div class="dashboard-wrapper">
-                        <h2 class="dashboard-title">PESQUISA COM ESCOLAS<br>(IMPACTO DAS ATIVIDADES)</h2>
-                        <iframe src="dashboards/dashboard_escolas/dashboard_pesquisa_escolas.html" class="dashboard">
-                        </iframe>
-                    </div>
+        <section class="dados container" id="dados">
+            <menu class="dados-menu">
+                <h2>DADOS</h2>
+                <p>Selecione uma categoria para visualizar os resultados obtidos.</p>
+                <nav class="dados-nav">
+                    <a onclick="exibirDados('dadosGerais')">Geral</a>
+                    <a onclick="exibirDados('dadosEscolas')">Escolas</a>
+                    <a onclick="exibirDados('dadosAtividades')">Atividades</a>
+                </nav>
+            </menu>
+            <article id="dashboards" class="dados-dashboards">
+                <div class="dashboard-wrapper dashboard-display" id="dadosGerais">
+                    <h2 class="dashboard-title">VISÃO GERAL DAS ATIVIDADES NA NOSSA UNIVERSIDADE</h2>
+                    <iframe src="dashboards/dashboard_atividades/dashboard_pesquisa_atividades.html" class="dashboard">
+                    </iframe>
                 </div>
-            </article>
-            <article id="atividades" class="activities">
-                    <div class="dashboar-wrapper">
-                        <div class="dashboard-title">
-                            <h2>Relatórios por atividade</h2>
-                            <p>Selecione uma atividade para abrir sua página individual.</p>
-                        </div>
-                        <iframe src="dashboards/dashboard-atividades_individuais/iframe.html" class="dashboard"></iframe>
+                <div class="dashboard-wrapper dashboard-display" id="dadosEscolas">
+                    <h2 class="dashboard-title">PESQUISA COM ESCOLAS<br>(IMPACTO DAS ATIVIDADES)</h2>
+                    <iframe src="dashboards/dashboard_escolas/dashboard_pesquisa_escolas.html" class="dashboard">
+                    </iframe>
+                </div>
+                <div class="dashboard-wrapper dashboard-display" id="dadosAtividades">
+                    <div class="dashboard-title">
+                        <h2>Dashboards por atividade</h2>
+                        <p>Selecione uma atividade para abrir sua página individual.</p>
                     </div>
+                    <iframe src="dashboards/dashboard-atividades_individuais/iframe.html" class="dashboard"></iframe>
+                </div>
             </article>
         </section>
     </main>
