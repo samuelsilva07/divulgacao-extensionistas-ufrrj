@@ -84,29 +84,23 @@
         <section class="dados container" id="dados">
             <menu class="dados-menu">
                 <h2>DADOS</h2>
-                <p>Selecione uma categoria para visualizar os resultados obtidos.</p>
                 <nav class="dados-nav">
                     <a onclick="exibirDados('dadosGerais')">Geral</a>
                     <a onclick="exibirDados('dadosEscolas')">Escolas</a>
                     <a onclick="exibirDados('dadosAtividades')">Atividades</a>
                 </nav>
+                <p id="dashboards-placeholder">Selecione uma categoria para visualizar os dashboards produzidos.</p>
             </menu>
             <article id="dashboards" class="dados-dashboards">
                 <div class="dashboard-wrapper dashboard-display" id="dadosGerais">
-                    <h2 class="dashboard-title">VISÃO GERAL DAS ATIVIDADES NA NOSSA UNIVERSIDADE</h2>
                     <iframe src="dashboards/dashboard_atividades/dashboard_pesquisa_atividades.html" class="dashboard">
                     </iframe>
                 </div>
                 <div class="dashboard-wrapper dashboard-display" id="dadosEscolas">
-                    <h2 class="dashboard-title">PESQUISA COM ESCOLAS<br>(IMPACTO DAS ATIVIDADES)</h2>
                     <iframe src="dashboards/dashboard_escolas/dashboard_pesquisa_escolas.html" class="dashboard">
                     </iframe>
                 </div>
                 <div class="dashboard-wrapper dashboard-display" id="dadosAtividades">
-                    <div class="dashboard-title">
-                        <h2>Dashboards por atividade</h2>
-                        <p>Selecione uma atividade para abrir sua página individual.</p>
-                    </div>
                     <iframe src="dashboards/dashboard-atividades_individuais/iframe.html" class="dashboard"></iframe>
                 </div>
             </article>
