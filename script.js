@@ -102,9 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // 4. DADOS: Seleção do dashboard exibido
 // =============================================
 
+const text = document.getElementById("dashboards-placeholder");
+
 function exibirDados(id) {
     const dados = document.getElementsByClassName("dashboard-display");
-    
+    text.style.display = "none";
     for (let article of dados) {
         if (article.id === id){
             article.style.display = 'block';
