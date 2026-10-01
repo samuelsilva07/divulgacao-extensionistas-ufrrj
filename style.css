@@ -302,3 +302,10 @@ footer a {
 .pesquisas-section .dashboard-wrapper:last-child {
     margin-bottom: 0;
 }
+
+@media screen and (max-width: 400px) {
+    .user-actions {
+        display: none;
+    }
+
+}

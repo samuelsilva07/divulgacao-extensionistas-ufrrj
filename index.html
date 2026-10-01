@@ -81,29 +81,31 @@
             </div>
         </section>
 
-        <section class="dados container" id="dados">
-            <menu class="dados-menu">
-                <h2>DADOS</h2>
-                <nav class="dados-nav">
-                    <a onclick="exibirDados('dadosGerais')">Geral</a>
-                    <a onclick="exibirDados('dadosEscolas')">Escolas</a>
-                    <a onclick="exibirDados('dadosAtividades')">Atividades</a>
-                </nav>
-                <p id="dashboards-placeholder">Selecione uma categoria para visualizar os dashboards produzidos.</p>
-            </menu>
-            <article id="dashboards" class="dados-dashboards">
-                <div class="dashboard-wrapper dashboard-display" id="dadosGerais">
-                    <iframe src="dashboards/dashboard_atividades/dashboard_pesquisa_atividades.html" class="dashboard">
-                    </iframe>
-                </div>
-                <div class="dashboard-wrapper dashboard-display" id="dadosEscolas">
-                    <iframe src="dashboards/dashboard_escolas/dashboard_pesquisa_escolas.html" class="dashboard">
-                    </iframe>
-                </div>
-                <div class="dashboard-wrapper dashboard-display" id="dadosAtividades">
-                    <iframe src="dashboards/dashboard-atividades_individuais/iframe.html" class="dashboard"></iframe>
-                </div>
-            </article>
+        <section class="dados" id="dados">
+            <div class="container">
+                <menu class="dados-menu">
+                    <h2>DADOS</h2>
+                    <nav class="dados-nav">
+                        <a onclick="exibirDados('dadosGerais')">Geral</a>
+                        <a onclick="exibirDados('dadosEscolas')">Escolas</a>
+                        <a onclick="exibirDados('dadosAtividades')">Atividades</a>
+                    </nav>
+                    <p id="dashboards-placeholder">Selecione uma categoria para visualizar os dashboards produzidos.</p>
+                </menu>
+                <article id="dashboards" class="dados-dashboards">
+                    <div class="dashboard-wrapper dashboard-display" id="dadosGerais">
+                        <iframe src="dashboards/dashboard_atividades/dashboard_pesquisa_atividades.html" class="dashboard">
+                        </iframe>
+                    </div>
+                    <div class="dashboard-wrapper dashboard-display" id="dadosEscolas">
+                        <iframe src="dashboards/dashboard_escolas/dashboard_pesquisa_escolas.html" class="dashboard">
+                        </iframe>
+                    </div>
+                    <div class="dashboard-wrapper dashboard-display" id="dadosAtividades">
+                        <iframe src="dashboards/dashboard-atividades_individuais/iframe.html" class="dashboard"></iframe>
+                    </div>
+                </article>
+            </div>
         </section>
     </main>
 
