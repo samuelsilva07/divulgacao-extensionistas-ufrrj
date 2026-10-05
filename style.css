@@ -80,7 +80,7 @@ header {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 2em 1em;
+    gap: 2em 4em;
 }
 
 .logo {
@@ -303,7 +303,7 @@ footer a {
     margin-bottom: 0;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 576px) {
     .user-actions {
         display: none;
     }
