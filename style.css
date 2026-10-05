@@ -64,6 +64,12 @@ ul, ol {
     margin-bottom: 20px;
 }
 
+hr {
+    border-color: white;
+    margin: 0.5em auto;
+    max-width: 500px;
+}
+
 /* Cabeçalho (Header) */
 header {
     background-color: var(--primary-blue);
@@ -80,7 +86,7 @@ header {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 2em 4em;
+    gap: 1em 4em;
 }
 
 .logo {
@@ -186,32 +192,37 @@ nav a {
 
 .dados-menu {
     text-align: center;
-    margin: auto;
 }
 
 .dados-nav {
+    margin: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 1em;
-    flex-basis: 100px;
-    gap: 10%;
+    gap: 3em;
+    padding: 16px 0;
+
 }
 
-.dados-nav a {
-    font-weight: 600;
-    font-size: 20px;
-    color: var(--link-color);
-    text-decoration: none;
-}
-
-.dados-nav a:hover {
-    text-decoration: underline;
+.dados-nav button {
+    background-color: black;
+    flex-basis: 70px;
+    border: none;
+    background: transparent;
+    color: var(--primary-blue);
+    font-size: 18px;
     cursor: pointer;
 }
 
+.dados-nav button:hover {
+    text-decoration: underline;
+}
+
 #dashboards-placeholder {
-    padding: 2em 0 1em;
+    margin-top: 30px;
+    padding: 2em;
+    border-radius: 22px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(68,79,108,.08);
 }
 
 .dados-dashboards {
@@ -222,7 +233,7 @@ nav a {
 .dashboard {
     width: 100%;
     border: 1px solid #E6E8EF;
-    border-radius: 16px;
+    border-radius: 22px;
     background-color: white;
     box-shadow: 0 5px 20px rgba(68,79,108,.08);
 }
@@ -241,17 +252,6 @@ nav a {
 
 #dadosGerais, #dadosEscolas, #dadosAtividades {
     display: none;
-}
-
-.dashboard-wrapper h2 {
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--heading-color);
-}
-
-.dashboard-title p {
-    color: var(--text-color);
-    text-align: center;
 }
 
 /* Rodapé (Footer) */
@@ -308,4 +308,7 @@ footer a {
         display: none;
     }
 
+    .dados-nav {
+        gap: 1.5em;
+    }
 }
