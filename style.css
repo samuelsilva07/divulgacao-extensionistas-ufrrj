@@ -27,11 +27,6 @@ body {
     background-color: var(--bg-color);
 }
 
-.banner, .about, article {
-    max-width: 1200px;
-    margin: auto;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -122,13 +117,13 @@ nav a {
 .user-actions {
     display: flex;
     gap: 0.5em;
+    cursor: pointer;
 }
 
 .user-actions button {
     background: none;
     border: none;
     color: white;
-    cursor: pointer;
     font-size: 14px;
 }
 

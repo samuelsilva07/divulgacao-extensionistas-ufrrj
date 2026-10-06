@@ -24,10 +24,10 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--main-font);
+    font-family: Arial, sans-serif;
     line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 .titulo {
@@ -49,7 +49,8 @@ a:hover {
 
 .container {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+    /* padding: 5px; */
 }
 
 img {
@@ -111,19 +112,14 @@ nav a {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .user-actions button {
     background: none;
     border: none;
     color: white;
-    cursor: pointer;
     font-size: 16px;
-}
-
-.user-actions a {
-    color: white;
-    margin-left: 10px;
 }
 
 /* ==========================================
@@ -132,7 +128,7 @@ nav a {
 
 /* HERO */
 .hero {
-    padding: 2em 1em 0;
+    padding: 2em 1em;
     color: var(--primary-blue); /* Muda a cor da letra para o azul padrão */
     background-color: white;    /* Muda a cor de fundo para branco */
 
@@ -178,7 +174,7 @@ nav a {
 footer {
     background-color: var(--footer-bg);
     color: white;
-    padding: 40px 0 20px 0;
+    padding: 40px 20px 20px 20px; /* Ajustei o padding inferior */
     font-size: 14px;
 }
 
@@ -190,7 +186,8 @@ footer a {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
+    gap: 2em;
 }
 
 .contact-info strong,
@@ -208,7 +205,7 @@ footer a {
     margin-bottom: 10px;
 }
 
-/* Força a quebra de linha para a linha e os direitos autorais ficarem na parte inferior */
+/* Força a quebra de linha para ficar na parte inferior */
 .copyright {
     width: 100%; 
     text-align: right;
