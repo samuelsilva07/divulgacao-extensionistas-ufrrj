@@ -28,12 +28,6 @@ function buscarAtividade(dados, id) {
     console.log("ERRO: Atividade não encontrada.");        
 }
 
-const nome = document.getElementById("nome");
-const coordenador = document.getElementById("coordenador");
-const cargaHoraria = document.getElementById("cargaHoraria");
-const descricao = document.getElementById("descricao");
-const dashboard = document.getElementById("dashboard");
-
 function redimensionarIframe(iframe) {
     const documento = iframe.contentDocument;
     if (!documento || documento.readyState !== "complete")
@@ -54,6 +48,12 @@ function redimensionarIframe(iframe) {
 
     iframe.style.height = `${Math.ceil(alturaConteudo + espacamentoVertical + 20)}px`;
 }
+
+const nome = document.getElementById("nome");
+const coordenador = document.getElementById("coordenador");
+const cargaHoraria = document.getElementById("cargaHoraria");
+const descricao = document.getElementById("descricao");
+const dashboard = document.getElementById("dashboard");
 
 function exibirAtividade(atividade) {
     nome.innerText = atividade.nome;
