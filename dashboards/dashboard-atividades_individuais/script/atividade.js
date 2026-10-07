@@ -34,21 +34,44 @@ const cargaHoraria = document.getElementById("cargaHoraria");
 const descricao = document.getElementById("descricao");
 const dashboard = document.getElementById("dashboard");
 
+function redimensionarIframe(iframe) {
+    const documento = iframe.contentDocument;
+    if (!documento || documento.readyState !== "complete")
+        return;
+
+    iframe.style.height = "0px";
+    const alturaConteudo = Math.max(
+        documento.documentElement.scrollHeight,
+        documento.body ? documento.body.scrollHeight : 0
+    );
+    const estilo = window.getComputedStyle(iframe);
+    const espacamentoVertical = [
+        "paddingTop",
+        "paddingBottom",
+        "borderTopWidth",
+        "borderBottomWidth"
+    ].reduce((total, propriedade) => total + parseFloat(estilo[propriedade]), 0);
+
+    iframe.style.height = `${Math.ceil(alturaConteudo + espacamentoVertical + 20)}px`;
+}
+
 function exibirAtividade(atividade) {
     nome.innerText = atividade.nome;
     coordenador.innerHTML += `${atividade.coordenador}`;
     cargaHoraria.innerHTML += `${atividade.cargaHoraria}h`;
     descricao.innerText = atividade.descricao;
-    dashboard.innerHTML = `
-        <iframe 
-            src="${atividade.dashboard}" 
-            width="100%"  
-            height="800px"
-            style="border: 1px solid #E6E8EF; padding: 1em; border-radius: 16px; background-color: white; box-shadow: 0 5px 20px rgba(68,79,108,.08);">
-        </iframe> 
-    `
+    dashboard.innerHTML = `<iframe title="Dados da atividade"></iframe>`;
+    const iframe = dashboard.querySelector("iframe");
+    iframe.addEventListener("load", () => redimensionarIframe(iframe));
+    iframe.src = atividade.dashboard;
     console.log("Elementos HTML adicionados à página.");
 }
+
+window.addEventListener("resize", () => {
+    const iframe = dashboard.querySelector("iframe");
+    if (iframe)
+        requestAnimationFrame(() => redimensionarIframe(iframe));
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const parametros = new URLSearchParams(window.location.search);

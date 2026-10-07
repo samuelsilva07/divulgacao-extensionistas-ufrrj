@@ -151,20 +151,13 @@ nav a {
     background-color: var(--light-creme);
 }
 
-.dados__analises {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-around;
-    gap: 2em 4em;
-    margin: 2em auto;
-}
-
-.dados__dashboard .card {
-
-    border: 1px solid black;
-    width: 400px;
-    height: 200px;
+iframe {
+    width: 100%;
+    border: 1px solid #E6E8EF;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(68,79,108,.08);
 }
 
 /* ==========================================
@@ -212,10 +205,4 @@ footer a {
     margin-top: 40px;
     border-top: 1px solid #335577;
     padding-top: 15px;
-}
-
-@media screen and (max-width: 576px) {
-    .user-actions {
-        display: none;
-    }
 }
